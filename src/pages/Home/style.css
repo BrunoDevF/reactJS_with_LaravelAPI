@@ -1,0 +1,46 @@
+body {
+    height: 100%;
+}
+#page-home{
+    height: 665px;
+}
+.content {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content main{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.content .upload{
+    width: 50%;
+    text-align: center;
+}
+.upload input[type=file]{
+    display: none;
+}
+.upload label {
+    cursor: pointer;
+
+    text-decoration: none;
+    background-color: #00DFC0;
+    
+    color: white;
+    font-weight: 700;
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+.content .img {
+    width: 50%;
+}
+.content main img {
+    width: 50%;
+    height: 50%;
+    text-align: right;
+}
