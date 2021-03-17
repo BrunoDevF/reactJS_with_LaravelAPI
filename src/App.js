@@ -12,6 +12,7 @@ import './pages/Home/style.css';
 
 function App() {
   const [fileList,setFileList] = useState([]);
+  const [file,setFile] = useState(null);
 
   useEffect(()=>{
     requestList();
@@ -27,35 +28,41 @@ function App() {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  //await API.upload(fileList);
-
-
+  await API.upload(file);
+  console.log(file);
+  
+  setFile(null);
   requestList();
 }
 
   return (
-    <div className="App">
-      <div id="page-home">
-            <div className="content">
-                <main>
-                    <div className="upload">
-                        <form onSubmit={handleSubmit} >
-                            <label htmlFor="file">Faça upload de seus arquivos</label>
-                            <input type="file" name="file" id="file" onChange={e=>{setFileList(e.target.files[0])}} />
-                            <input type="submit" value="enviar"/>
-                        </form>
-                    </div>
-                    <div className="img">
-                        <img src={ img } alt=""/>
-                    </div>
-                </main>
-            </div>
-        </div>
-      <div>
-        <File data={fileList}></File>
+  <div className="App">
+    <div id="page-home">
+          <div className="content">
+              <main>
+                  <div className="upload">
+                      <form onSubmit={handleSubmit} >
+                          <label htmlFor="file">Faça upload de seus arquivos</label>
+                          <input type="file" name="files" id="file"
+                          onChange={
+                            e=>{
+                              setFile(e.target.files[0])
+                            }
+                          } />
+                          <input type="submit" value="enviar"/>
+                      </form>
+                  </div>
+                  <div className="img">
+                      <img src={ img } alt=""/>
+                  </div>
+              </main>
+          </div>
       </div>
+    <div>
+      <File data={fileList}></File>
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
