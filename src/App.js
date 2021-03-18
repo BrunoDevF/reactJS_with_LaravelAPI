@@ -22,16 +22,17 @@ function App() {
     const fileList = await API.list();
     setFileList(fileList);
 
-    console.log(fileList);
+    //console.log(fileList);
   }
 
 const handleSubmit = async (e) => {
   e.preventDefault();
 
   await API.upload(file);
+
   console.log(file);
-  
-  setFile(null);
+
+  //setFile(null);
   requestList();
 }
 
@@ -49,7 +50,8 @@ const handleSubmit = async (e) => {
                               setFile(e.target.files[0])
                             }
                           } />
-                          <input type="submit" value="enviar"/>
+
+                          <button>Enviar arquivo</button>
                       </form>
                   </div>
                   <div className="img">
