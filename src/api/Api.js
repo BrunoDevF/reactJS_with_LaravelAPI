@@ -11,7 +11,7 @@ const API = {
         //Cria uma instancia de Form
         const data = new FormData();
         //adiciona um par de chaves novo ao form
-        data.append('files', file);
+        data.append('file', file);
         
         await fetch(ApiBase + '/upload', {
             method: 'POST',

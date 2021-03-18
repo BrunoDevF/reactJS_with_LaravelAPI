@@ -28,9 +28,9 @@ function App() {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
+  console.log(file);
   await API.upload(file);
 
-  console.log(file);
 
   //setFile(null);
   requestList();
@@ -44,7 +44,7 @@ const handleSubmit = async (e) => {
                   <div className="upload">
                       <form onSubmit={handleSubmit} >
                           <label htmlFor="file">Faça upload de seus arquivos</label>
-                          <input type="file" name="files" id="file"
+                          <input type="file" name="file" id="file"
                           onChange={
                             e=>{
                               setFile(e.target.files[0])
