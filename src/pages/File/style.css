@@ -1,0 +1,21 @@
+.file{
+    width: 100%;
+    padding: 5px 20px;
+    border: 1px solid red
+}
+.line table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 950px;
+    width: 100%
+}
+.file tr{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.file td{
+    
+    font-size: 18px;
+    color: red;
+}

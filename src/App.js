@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 
 import API from './api/Api';
 import File from './pages/File/File';
+import './pages/File/style.css';
+
+import Vitrine from './pages/Vitrine/Vitrine'
 
 
 import img from './assets/img.jpg';
@@ -22,7 +25,7 @@ function App() {
     const fileList = await API.list();
     setFileList(fileList);
 
-    //console.log(fileList);
+    console.log(fileList);
   }
 
 const handleSubmit = async (e) => {
@@ -36,32 +39,46 @@ const handleSubmit = async (e) => {
   requestList();
 }
 
-  return (
+return (
   <div className="App">
     <div id="page-home">
-          <div className="content">
-              <main>
-                  <div className="upload">
-                      <form onSubmit={handleSubmit} >
-                          <label htmlFor="file">Faça upload de seus arquivos</label>
-                          <input type="file" name="file" id="file"
-                          onChange={
-                            e=>{
-                              setFile(e.target.files[0])
-                            }
-                          } />
+        <div className="content">
+            <main>
+              <div className="upload">
+                <form onSubmit={handleSubmit} >
+                  <label htmlFor="file">Faça upload de seus arquivos</label>
+                  <input type="file" name="file" id="file"
+                    onChange={
+                    e=>{
+                    setFile(e.target.files[0])
+                      }
+                    } />
 
-                          <button>Enviar arquivo</button>
-                      </form>
-                  </div>
-                  <div className="img">
-                      <img src={ img } alt=""/>
-                  </div>
-              </main>
+                    <button>Enviar arquivo</button>
+                </form>
+              </div>
+              <div className="img">
+                  <img src={ img } alt=""/>
+              </div>
+            </main>
           </div>
-      </div>
-    <div>
-      <File data={fileList}></File>
+          <div>
+            <>
+            <tr>
+              <td>ID</td>
+              <td>Nome</td>
+              <td>tipo</td>
+              <td>Tamanho</td>
+              <td>url</td>
+          </tr>
+            {
+              fileList.map(file => <File data={file} />)
+            }
+            {/* {fileList.map((item, index) => {
+                <File data={item} key={index} />
+            })} */}
+            </>
+        </div>
     </div>
   </div>
 );
