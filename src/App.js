@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import API from './api/Api';
 import File from './pages/File/File';
 import './pages/File/style.css';
-
-import Vitrine from './pages/Vitrine/Vitrine'
+import './assets/js/script';
+// import Vitrine from './pages/Vitrine/Vitrine'
 
 
 import img from './assets/img.jpg';
@@ -46,31 +46,43 @@ return (
             <main>
               <div className="upload">
                 <form onSubmit={handleSubmit} >
-                  <label htmlFor="file">Faça upload de seus arquivos</label>
+                  <label htmlFor="file">Clique aqui para enviar seus arquivos</label>
+                  
                   <input type="file" name="file" id="file"
                     onChange={
                     e=>{
-                    setFile(e.target.files[0])
+                      setFile(e.target.files[0]);
+                      
+                      console.log(e.target.files[0].name);
                       }
-                    } />
-
+                    } 
+                  />
+                  <div>
+                    <p>arquivo selecionado</p>
+                  </div>
                     <button>Enviar arquivo</button>
                 </form>
               </div>
-              <div className="img">
+              {/* <div className="img">
                   <img src={ img } alt=""/>
-              </div>
+              </div> */}
             </main>
           </div>
           <div>
             <>
-            <tr>
-              <td>ID</td>
-              <td>Nome</td>
-              <td>tipo</td>
-              <td>Tamanho</td>
-              <td>url</td>
-          </tr>
+          <div className="file">
+            <div className="line">
+              <table>
+                <tr>
+                  <td>ID</td>
+                  <td>Nome</td>
+                  <td>tipo</td>
+                  <td>Tamanho</td>
+                  <td>url</td>
+                </tr>
+              </table>
+            </div>
+          </div>  
             {
               fileList.map(file => <File data={file} />)
             }
