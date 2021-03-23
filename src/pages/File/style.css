@@ -60,3 +60,15 @@ table tr{
     width: 90%;
     padding: 5px;
 }
+
+@media screen and (max-width: 887px) {
+    .line table {
+        min-width: 718px;
+    }
+    .file tr{
+        background-color: #fff;
+    }
+    .pop-up {
+        left: 20%;
+    }
+}
