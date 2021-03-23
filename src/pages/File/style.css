@@ -2,16 +2,15 @@
     width: 100%;
 }
 .line {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 .line table{
     border-collapse: collapse;
-    /* margin: 20px 0; */
-    min-width: 900px;
-    width: 100%;
-    background-color: #fff;
+    /* min-width: 900px; */
+    width: 100%;  
 }
+
 table tr{
     text-align: left;
  }
@@ -30,11 +29,11 @@ table tr{
     width: 50px;
 }
 .file table tr td:nth-of-type(2){
-    width: 400px;
+    width: 190px;
 }
 .file table tr td:nth-of-type(3){
     text-align: center;
-    width: 200px;
+    width: 190px;
 }
 .file table tr td:nth-of-type(4){
     text-align: center;
@@ -43,4 +42,21 @@ table tr{
 .file table tr td:nth-of-type(4){
     text-align: justify;
     width: 100px;
+}
+
+.pop-up {
+    display: block;
+    position: relative;
+    /* top: -15px; */
+    left: 35%;
+    width: 120px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid  #919191;
+    text-align: center;
+    padding: 5px;
+}
+.pop-up input {
+    width: 90%;
+    padding: 5px;
 }

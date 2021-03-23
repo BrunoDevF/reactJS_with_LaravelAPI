@@ -1,11 +1,6 @@
-// window.onload = initPage;
 
-// function initPage(){
-//     alert(list);
-// }
 
-const link = (msg) => {
-    alert(msg);
-}
 
-export default link;
+    var button = document.getElementsByClassName('button-copy-link');
+    
+    console.log(button);

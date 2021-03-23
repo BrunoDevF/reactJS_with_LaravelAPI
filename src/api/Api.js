@@ -7,11 +7,12 @@ const API = {
 
         return json;
     },
-    upload: async (file) => {
+    upload: async (file, folder) => {
         //Cria uma instancia de Form
         const data = new FormData();
         //adiciona um par de chaves novo ao form
         data.append('file', file);
+        data.append('folder', folder);
         
         await fetch(ApiBase + '/upload', {
             method: 'POST',

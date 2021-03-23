@@ -1,7 +1,7 @@
 import React from 'react';
 
-
 const File = (props) => {
+
 
     return (
         <div className="file">
@@ -13,12 +13,12 @@ const File = (props) => {
                             <td>{props.data.name}</td>
                             <td>{props.data.type}</td>
                             <td>{(props.data.size/1000)}</td>
-                            <td onClick={
-                                () => {
-                                    props.data.url.select()
-                                    document.execCommand('copy')
-                                }
-                            }>{props.data.url}</td>
+                            <td>
+                                <div className="pop-up">
+                                    <input type="text"   value={props.data.url} />
+                                </div>
+                                {/* <button onClick={props.click} className="button-copy-link">Copiar endereço do arquivo</button> */}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

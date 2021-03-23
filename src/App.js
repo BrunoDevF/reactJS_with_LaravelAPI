@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
-
 import API from './api/Api';
 import File from './pages/File/File';
 import './pages/File/style.css';
-import './assets/js/script';
-// import Vitrine from './pages/Vitrine/Vitrine'
-
-
-import img from './assets/img.jpg';
 import './pages/Home/style.css';
-
-
 
 function App() {
   const [fileList,setFileList] = useState([]);
+
+  const [folder,setFolder] = useState(null);
+
   const [file,setFile] = useState(null);
 
   useEffect(()=>{
@@ -24,72 +19,72 @@ function App() {
   const requestList = async () => {
     const fileList = await API.list();
     setFileList(fileList);
-
-    console.log(fileList);
   }
 
 const handleSubmit = async (e) => {
   e.preventDefault();
-
-  console.log(file);
-  await API.upload(file);
+  await API.upload(file,folder);
 
 
-  //setFile(null);
   requestList();
 }
 
 return (
   <div className="App">
     <div id="page-home">
-        <div className="content">
+        <div className="content mg-top-bottom">
             <main>
               <div className="upload">
                 <form onSubmit={handleSubmit} >
-                  <label htmlFor="file">Clique aqui para enviar seus arquivos</label>
+                  <label id="_file" htmlFor="file">Clique aqui para enviar seus arquivos</label>
                   
                   <input type="file" name="file" id="file"
                     onChange={
                     e=>{
                       setFile(e.target.files[0]);
-                      
-                      console.log(e.target.files[0].name);
                       }
                     } 
                   />
-                  <div>
-                    <p>arquivo selecionado</p>
+                  <div className="pasta">
+                    <label>Deseja agrupar esse arquivo em uma pasta?</label>
+                    <input type="text" name="pasta" placeholder="Digite aqui o nome da pasta..." 
+                    onBlur={
+                      (e)=> {
+                        setFolder(e.target.value)
+                      }
+                    } 
+                    />
+                    <p>Obs.: Caso não escolha nenhum nome para pasta os arquivos serão salvos na pasta DROP.</p>
                   </div>
                     <button>Enviar arquivo</button>
                 </form>
               </div>
-              {/* <div className="img">
-                  <img src={ img } alt=""/>
-              </div> */}
             </main>
           </div>
-          <div>
-            <>
-          <div className="file">
-            <div className="line">
-              <table>
-                <tr>
-                  <td>ID</td>
-                  <td>Nome</td>
-                  <td>tipo</td>
-                  <td>Tamanho</td>
-                  <td>url</td>
-                </tr>
-              </table>
-            </div>
-          </div>  
-            {
-              fileList.map(file => <File data={file} />)
-            }
-            {/* {fileList.map((item, index) => {
-                <File data={item} key={index} />
-            })} */}
-            </>
+          <div className="content">
+            <div className="bg-radius">
+                <div className="file">
+                  <div className="line">
+                    {fileList &&  (
+                      <table>
+                        <tr>
+                          <td>ID</td>
+                          <td>Nome</td>
+                          <td>tipo</td>
+                          <td>Tamanho</td>
+                          <td>url</td>
+                        </tr>
+                      </table>
+                    )} 
+                  </div>
+                </div> 
+
+              <div className="bg"> 
+                {
+                  fileList.map(file => <File data={file} />)
+                }
+              </div>
+          </div>
         </div>
     </div>
   </div>
