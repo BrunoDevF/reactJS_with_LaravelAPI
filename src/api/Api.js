@@ -4,7 +4,13 @@ const API = {
     list:async () => {
         const res = await fetch(ApiBase + '/list');
         const json = await res.json();
-
+        
+        return json;
+    },
+    dir:async () => {
+        const res = await fetch(ApiBase + '/dir');
+        const json = await res.json();
+        
         return json;
     },
     upload: async (file, folder) => {

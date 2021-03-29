@@ -4,18 +4,24 @@ import API from './api/Api';
 import File from './pages/File/File';
 import './pages/File/style.css';
 import './pages/Home/style.css';
+// import Page from './pages/Folders/Page';
+// import Folder from './pages/Folders/Folder';
 
 function App() {
   const [fileList,setFileList] = useState([]);
+  const [folder,setFolder] = useState([]);
+  // const [filter,setFilter] = useState();
 
-  const [folder,setFolder] = useState(null);
-
+  // const [directories,setDirectories] = useState([]);
   const [file,setFile] = useState(null);
 
   useEffect(()=>{
+    
     requestList();
+    // requestDir();
   },[]);
 
+  
   const requestList = async () => {
     const fileList = await API.list();
     setFileList(fileList);
@@ -62,9 +68,14 @@ return (
             </main>
           </div>
           <div className="content">
+          
             <div className="bg-radius">
                 <div className="file">
+                    
                   <div className="line">
+                      
+
+
                     {fileList &&  (
                       <table>
                         <tr>
@@ -87,6 +98,7 @@ return (
           </div>
         </div>
     </div>
+    
   </div>
 );
 }
